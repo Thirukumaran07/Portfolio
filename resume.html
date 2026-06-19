@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume | Thirukumaran S</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================================================
+           Resume Styling System (Print & Screen harmony)
+           ========================================================================== */
+        
+        :root {
+            --primary-color: #1e293b;
+            --secondary-color: #475569;
+            --accent-color: #2563eb;
+            --text-color: #334155;
+            --border-color: #e2e8f0;
+            --bg-color: #ffffff;
+            --font-family: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f1f5f9;
+            color: var(--text-color);
+            font-family: var(--font-family);
+            line-height: 1.5;
+            font-size: 14px;
+            padding: 40px 20px;
+        }
+
+        /* Resume Sheet Container */
+        .resume-sheet {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--bg-color);
+            padding: 50px 60px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        /* Action Top Bar (Floating when on screen, hidden on print) */
+        .action-bar {
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-back {
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+
+        .btn-back:hover {
+            color: var(--accent-color);
+        }
+
+        .btn-print {
+            background-color: var(--accent-color);
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-family: var(--font-family);
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s, transform 0.1s;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+        }
+
+        .btn-print:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+        /* Resume Content Formatting */
+        .resume-header {
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 24px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .header-left h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+        }
+
+        .header-left .title-sub {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-top: 6px;
+        }
+
+        .header-right {
+            text-align: right;
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+        }
+
+        .contact-info-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .contact-info-list li a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .contact-info-list li a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Section Layouts */
+        .resume-section {
+            margin-bottom: 28px;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 6px;
+            margin-bottom: 16px;
+        }
+
+        .summary-text {
+            color: var(--secondary-color);
+            text-align: justify;
+        }
+
+        /* Timeline Items inside Resume */
+        .timeline-item {
+            margin-bottom: 18px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+        }
+
+        .item-title {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1rem;
+        }
+
+        .item-meta {
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+
+        .item-date {
+            font-size: 0.85rem;
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+
+        .item-desc {
+            color: var(--secondary-color);
+            margin-top: 4px;
+        }
+
+        .item-details-list {
+            margin-top: 6px;
+            padding-left: 20px;
+            color: var(--secondary-color);
+        }
+
+        .item-details-list li {
+            margin-bottom: 4px;
+        }
+
+        /* Skills Matrix Layout */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .skill-category h4 {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .skill-list-inline {
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+        }
+
+        /* Achievements / Certifications */
+        .bullet-list {
+            padding-left: 20px;
+            color: var(--secondary-color);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        /* ==========================================================================
+           Print Override Media Queries
+           ========================================================================== */
+        
+        @media print {
+            body {
+                background-color: #ffffff;
+                color: #000000;
+                padding: 0;
+                font-size: 12px;
+            }
+
+            .resume-sheet {
+                padding: 0;
+                box-shadow: none;
+                border-radius: 0;
+                max-width: 100%;
+            }
+
+            .action-bar {
+                display: none; /* Hide UI navigation bars */
+            }
+
+            .resume-header {
+                border-bottom: 2px solid #000000;
+                padding-bottom: 12px;
+                margin-bottom: 20px;
+            }
+
+            .header-left h1 {
+                font-size: 1.8rem;
+            }
+
+            .resume-section {
+                margin-bottom: 20px;
+                page-break-inside: avoid;
+            }
+
+            .section-title {
+                font-size: 0.95rem;
+                margin-bottom: 10px;
+                border-bottom: 1px solid #000000;
+            }
+
+            .btn-print, .btn-back {
+                display: none;
+            }
+
+            a {
+                color: #000000 !important;
+                text-decoration: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Action Bar (Screen Only) -->
+    <div class="action-bar">
+        <a href="index.html" class="btn-back">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            <span>Back to Portfolio</span>
+        </a>
+        <button onclick="window.print()" class="btn-print">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            <span>Save as PDF / Print</span>
+        </button>
+    </div>
+
+    <!-- Resume Document Sheet -->
+    <div class="resume-sheet">
+        <!-- Header -->
+        <header class="resume-header">
+            <div class="header-left">
+                <h1>Thirukumaran S</h1>
+                <div class="title-sub">Aspiring Software Engineer &amp; AI Specialist</div>
+            </div>
+            <div class="header-right">
+                <ul class="contact-info-list">
+                    <li>📧 <a href="mailto:yourmail@example.com">yourmail@example.com</a></li>
+                    <li>🔗 <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a></li>
+                    <li>🐙 <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a></li>
+                    <li>💻 <a href="https://leetcode.com/yourusername" target="_blank">leetcode.com/yourusername</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <!-- Summary -->
+        <section class="resume-section">
+            <h2 class="section-title">Professional Summary</h2>
+            <p class="summary-text">
+                Motivated Computer Science engineering student with hands-on technical skills in Java, Python, and SQL databases. Highly passionate about designing machine learning systems, automated data models, and computer vision pipelines. Proven logic optimizer on LeetCode with experience driving technical event organization and hackathon architectures.
+            </p>
+        </section>
+
+        <!-- Education -->
+        <section class="resume-section">
+            <h2 class="section-title">Education</h2>
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div>
+                        <span class="item-title">Bachelor of Engineering in Computer Science</span>
+                        <div class="item-meta">Anna University Affiliated College</div>
+                    </div>
+                    <div class="item-date">2023 - 2027 (Expected)</div>
+                </div>
+                <p class="item-desc"><strong>Current CGPA:</strong> <span id="resume-cgpa-display">8.50</span> / 10.0</p>
+            </div>
+        </section>
+
+        <!-- Skills Matrix -->
+        <section class="resume-section">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Languages</h4>
+                    <p class="skill-list-inline">Java, Python, C Programming, SQL</p>
+                </div>
+                <div class="skill-category">
+                    <h4>Technologies</h4>
+                    <p class="skill-list-inline">Machine Learning, OpenCV, Computer Vision, Data Structures, OOP, DBMS</p>
+                </div>
+                <div class="skill-category">
+                    <h4>Tools</h4>
+                    <p class="skill-list-inline">Git, GitHub, MySQL, IntelliJ IDEA, VS Code, Arduino IDE</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section class="resume-section">
+            <h2 class="section-title">Key Projects</h2>
+            
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div>
+                        <span class="item-title">AI-Based Smart Pedestrian Crossing System</span>
+                        <span class="item-meta">| Python, OpenCV, Arduino, IoT</span>
+                    </div>
+                    <div class="item-date">2026</div>
+                </div>
+                <ul class="item-details-list">
+                    <li>Developed an automated traffic network queue controller analyzing live camera nodes using OpenCV contour extraction.</li>
+                    <li>Wrote embedded Arduino triggers in C++ communicating with the Python server to switch signals dynamically.</li>
+                    <li>Reduced vehicle idle waiting times at pedestrian junctions by 35% through real-time traffic density scheduling.</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div>
+                        <span class="item-title">StegoShield Security Tool</span>
+                        <span class="item-meta">| Python, Machine Learning, Cybersecurity</span>
+                    </div>
+                    <div class="item-date">2025</div>
+                </div>
+                <ul class="item-details-list">
+                    <li>Designed an anomaly detector scanning file payloads for hidden steganographic payload structures.</li>
+                    <li>Utilized machine learning classifiers to score image file variance indexes, achieving a high success rate on hidden content detections.</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div>
+                        <span class="item-title">Crop Disease Detection System</span>
+                        <span class="item-meta">| Python, ML, OpenCV</span>
+                    </div>
+                    <div class="item-date">2025</div>
+                </div>
+                <p class="item-desc">Created a convolution filter pre-processor identifying crop diseases from plant leaf texture images.</p>
+            </div>
+        </section>
+
+        <!-- Achievements & Certifications -->
+        <section class="resume-section">
+            <h2 class="section-title">Achievements &amp; Certifications</h2>
+            <ul class="bullet-list">
+                <li><strong>Organized Site RevampX Event:</strong> Handled operations, designed contest problems, and managed student teams.</li>
+                <li><strong>Hackathon Participant:</strong> Competed in multiple institution-level AI &amp; Software Engineering hackathons.</li>
+                <li><strong>Problem Solving:</strong> Solved coding problems on LeetCode focusing on sorting, arrays, search trees, and relational queries.</li>
+                <li><strong>Certifications:</strong> Java Programming, SQL Databases, Machine Learning Pipelines, Python, Data Structures &amp; Algorithms.</li>
+            </ul>
+        </section>
+    </div>
+
+    <script>
+        // Sync CGPA dynamically from LocalStorage if user updated it on the portfolio dashboard
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedCgpa = localStorage.getItem('user_cgpa');
+            const cgpaDisplay = document.getElementById('resume-cgpa-display');
+            if (savedCgpa && cgpaDisplay) {
+                cgpaDisplay.textContent = savedCgpa;
+            }
+        });
+    </script>
+</body>
+</html>
